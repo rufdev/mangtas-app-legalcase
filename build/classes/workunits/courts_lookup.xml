@@ -1,0 +1,8 @@
+<workunit extends="com/rameses/seti2/templates/CrudLookup.xml" 
+          schemaName="case_courts">
+   <invokers>
+       <invoker type="courts:lookup" caption="Lookup Case Type" 
+                  action="init" target="popup" height="350"  
+                  cols="code,name"/>
+   </invokers>
+</workunit>

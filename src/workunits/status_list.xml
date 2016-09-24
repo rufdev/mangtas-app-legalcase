@@ -1,0 +1,6 @@
+<workunit extends="com/rameses/seti2/templates/CrudList.xml" schemaName="case_status">
+    <invokers>
+        <invoker folderid="home/legalcase/master" caption="Status" action="init"/>
+        <invoker folderid="home/master/legalcase" caption="Status" action="init"/>
+    </invokers>
+</workunit>

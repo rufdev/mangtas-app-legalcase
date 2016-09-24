@@ -1,0 +1,10 @@
+<workunit schemaName="case">
+    <invokers>
+        <invoker type="case:create" caption="Case Files" action="create"/>
+        <invoker type="case:open" caption="Case Files" action="open"/>
+    </invokers>
+    <code class="mangtas.legalcase.models.LegalCaseModel" />
+    <pages>
+        <page template="mangtas.legalcase.views.LegalCasePage" />
+    </pages>
+</workunit>
