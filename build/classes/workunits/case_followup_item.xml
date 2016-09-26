@@ -1,0 +1,11 @@
+<workunit schemaName="case_followups">
+    <invokers>
+        <invoker type="case_followup_item" caption="Add Followup Item" 
+                 target="popup" action="create"/>
+    </invokers>
+    <code class="mangtas.legalcase.models.CaseFollowupModel" />
+    <pages>
+        <page template="mangtas.legalcase.views.CaseFollowupPage" />
+    </pages>
+</workunit>
+

@@ -46,10 +46,20 @@ public class LegalCasePage extends javax.swing.JPanel {
         xDecimalField3 = new com.rameses.rcp.control.XDecimalField();
         jScrollPane1 = new javax.swing.JScrollPane();
         xTextArea1 = new com.rameses.rcp.control.XTextArea();
+        xPanel3 = new com.rameses.rcp.control.XPanel();
+        xDataTable2 = new com.rameses.rcp.control.XDataTable();
+        xButton4 = new com.rameses.rcp.control.XButton();
+        xButton5 = new com.rameses.rcp.control.XButton();
+        xButton6 = new com.rameses.rcp.control.XButton();
         xPanel2 = new com.rameses.rcp.control.XPanel();
         xDataTable1 = new com.rameses.rcp.control.XDataTable();
         xButton1 = new com.rameses.rcp.control.XButton();
         xButton2 = new com.rameses.rcp.control.XButton();
+        xButton3 = new com.rameses.rcp.control.XButton();
+        xPanel5 = new com.rameses.rcp.control.XPanel();
+        xDataTable3 = new com.rameses.rcp.control.XDataTable();
+        xButton7 = new com.rameses.rcp.control.XButton();
+        xButton8 = new com.rameses.rcp.control.XButton();
 
         xFormPanel1.setCaptionWidth(120);
 
@@ -72,12 +82,15 @@ public class LegalCasePage extends javax.swing.JPanel {
         xLookupField2.setCaption("Case Type");
         xLookupField2.setExpression("#{entity.casetype.name}");
         xLookupField2.setHandler("lookupCaseType");
+        xLookupField2.setName("entity.casetype"); // NOI18N
         xLookupField2.setPreferredSize(new java.awt.Dimension(300, 20));
+        xLookupField2.setRequired(true);
         xFormPanel1.add(xLookupField2);
 
         entityLookup1.setCaption("Owner");
         entityLookup1.setName("entity.owner"); // NOI18N
         entityLookup1.setPreferredSize(new java.awt.Dimension(0, 21));
+        entityLookup1.setRequired(true);
         xFormPanel1.add(entityLookup1);
 
         entityAddressLookup1.setCaption("Owner Address");
@@ -89,19 +102,25 @@ public class LegalCasePage extends javax.swing.JPanel {
         xLookupField3.setCaption("Court");
         xLookupField3.setExpression("#{entity.court.name}");
         xLookupField3.setHandler("lookupCourt");
+        xLookupField3.setName("entity.court"); // NOI18N
         xLookupField3.setPreferredSize(new java.awt.Dimension(300, 20));
+        xLookupField3.setRequired(true);
         xFormPanel1.add(xLookupField3);
 
         xLookupField4.setCaption("Status");
         xLookupField4.setExpression("#{entity.status.name}");
         xLookupField4.setHandler("lookupStatus");
+        xLookupField4.setName("entity.state"); // NOI18N
         xLookupField4.setPreferredSize(new java.awt.Dimension(300, 20));
+        xLookupField4.setRequired(true);
         xFormPanel1.add(xLookupField4);
 
         xLookupField1.setCaption("Counsel");
         xLookupField1.setExpression("#{entity.counsel.name}");
         xLookupField1.setHandler("lookupCounsel");
+        xLookupField1.setName("entity.counsel"); // NOI18N
         xLookupField1.setPreferredSize(new java.awt.Dimension(300, 20));
+        xLookupField1.setRequired(true);
         xFormPanel1.add(xLookupField1);
 
         xDecimalField3.setCaption("Acceptance Fee");
@@ -123,7 +142,7 @@ public class LegalCasePage extends javax.swing.JPanel {
             .addGroup(xPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(xFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(389, Short.MAX_VALUE))
         );
         xPanel1Layout.setVerticalGroup(
             xPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,6 +152,92 @@ public class LegalCasePage extends javax.swing.JPanel {
         );
 
         xTabbedPane1.addTab("General Info", xPanel1);
+
+        xDataTable2.setColumns(new com.rameses.rcp.common.Column[]{
+            new com.rameses.rcp.common.Column(new Object[]{
+                new Object[]{"name", "title"}
+                , new Object[]{"caption", "Title"}
+                , new Object[]{"width", 100}
+                , new Object[]{"minWidth", 0}
+                , new Object[]{"maxWidth", 0}
+                , new Object[]{"required", false}
+                , new Object[]{"resizable", true}
+                , new Object[]{"nullWhenEmpty", true}
+                , new Object[]{"editable", false}
+                , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
+            }),
+            new com.rameses.rcp.common.Column(new Object[]{
+                new Object[]{"name", "filesize"}
+                , new Object[]{"caption", "File Size"}
+                , new Object[]{"width", 100}
+                , new Object[]{"minWidth", 0}
+                , new Object[]{"maxWidth", 0}
+                , new Object[]{"required", false}
+                , new Object[]{"resizable", true}
+                , new Object[]{"nullWhenEmpty", true}
+                , new Object[]{"editable", false}
+                , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
+            }),
+            new com.rameses.rcp.common.Column(new Object[]{
+                new Object[]{"name", "extension"}
+                , new Object[]{"caption", "File Type"}
+                , new Object[]{"width", 100}
+                , new Object[]{"minWidth", 0}
+                , new Object[]{"maxWidth", 0}
+                , new Object[]{"required", false}
+                , new Object[]{"resizable", true}
+                , new Object[]{"nullWhenEmpty", true}
+                , new Object[]{"editable", false}
+                , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
+            })
+        });
+        xDataTable2.setHandler("attachmentListHandler");
+        xDataTable2.setName("attachmentSelectedItem"); // NOI18N
+
+        xButton4.setName("addAttachment"); // NOI18N
+        xButton4.setText("Add");
+
+        xButton5.setName("deleteAttachment"); // NOI18N
+        xButton5.setText("Delete");
+
+        xButton6.setName("viewAttachment"); // NOI18N
+        xButton6.setText("View");
+
+        javax.swing.GroupLayout xPanel3Layout = new javax.swing.GroupLayout(xPanel3);
+        xPanel3.setLayout(xPanel3Layout);
+        xPanel3Layout.setHorizontalGroup(
+            xPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(xPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(xPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(xDataTable2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 962, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, xPanel3Layout.createSequentialGroup()
+                        .addComponent(xButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(xButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(xButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        xPanel3Layout.setVerticalGroup(
+            xPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(xPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(xDataTable2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(xPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(xPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(xButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(xButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(xButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(203, Short.MAX_VALUE))
+        );
+
+        xTabbedPane1.addTab("Attachments", xPanel3);
 
         xPanel2.setVisibleWhen("#{ mode == 'read' }");
 
@@ -164,6 +269,19 @@ public class LegalCasePage extends javax.swing.JPanel {
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.DateColumnHandler(null, null, null)}
             }),
             new com.rameses.rcp.common.Column(new Object[]{
+                new Object[]{"name", "account.title"}
+                , new Object[]{"caption", "Account Title"}
+                , new Object[]{"width", 100}
+                , new Object[]{"minWidth", 0}
+                , new Object[]{"maxWidth", 0}
+                , new Object[]{"required", false}
+                , new Object[]{"resizable", true}
+                , new Object[]{"nullWhenEmpty", true}
+                , new Object[]{"editable", false}
+                , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
+            }),
+            new com.rameses.rcp.common.Column(new Object[]{
                 new Object[]{"name", "amount"}
                 , new Object[]{"caption", "Amount"}
                 , new Object[]{"width", 100}
@@ -177,7 +295,20 @@ public class LegalCasePage extends javax.swing.JPanel {
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.DecimalColumnHandler("#,##0.00", -1.0, -1.0, false, 2)}
             }),
             new com.rameses.rcp.common.Column(new Object[]{
-                new Object[]{"name", null}
+                new Object[]{"name", "parent.remarks"}
+                , new Object[]{"caption", "Remarks"}
+                , new Object[]{"width", 100}
+                , new Object[]{"minWidth", 0}
+                , new Object[]{"maxWidth", 0}
+                , new Object[]{"required", false}
+                , new Object[]{"resizable", true}
+                , new Object[]{"nullWhenEmpty", true}
+                , new Object[]{"editable", false}
+                , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
+            }),
+            new com.rameses.rcp.common.Column(new Object[]{
+                new Object[]{"name", "parent.createdby.name"}
                 , new Object[]{"caption", "Posted By"}
                 , new Object[]{"width", 100}
                 , new Object[]{"minWidth", 0}
@@ -190,7 +321,7 @@ public class LegalCasePage extends javax.swing.JPanel {
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
             }),
             new com.rameses.rcp.common.Column(new Object[]{
-                new Object[]{"name", "dtcreated"}
+                new Object[]{"name", "parent.dtcreated"}
                 , new Object[]{"caption", "Date Posted"}
                 , new Object[]{"width", 100}
                 , new Object[]{"minWidth", 0}
@@ -212,6 +343,9 @@ public class LegalCasePage extends javax.swing.JPanel {
         xButton2.setName("refreshItem"); // NOI18N
         xButton2.setText("Refresh");
 
+        xButton3.setName("paymentDetail"); // NOI18N
+        xButton3.setText("View Details");
+
         javax.swing.GroupLayout xPanel2Layout = new javax.swing.GroupLayout(xPanel2);
         xPanel2.setLayout(xPanel2Layout);
         xPanel2Layout.setHorizontalGroup(
@@ -219,9 +353,11 @@ public class LegalCasePage extends javax.swing.JPanel {
             .addGroup(xPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(xPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(xDataTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
+                    .addComponent(xDataTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 962, Short.MAX_VALUE)
                     .addGroup(xPanel2Layout.createSequentialGroup()
                         .addComponent(xButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(xButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(xButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -233,13 +369,96 @@ public class LegalCasePage extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(xPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(xButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(xButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(xDataTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(xButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(xButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(xDataTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         xTabbedPane1.addTab("Payments", xPanel2);
+
+        xPanel5.setVisibleWhen("#{ mode == 'read' }");
+
+        xDataTable3.setColumns(new com.rameses.rcp.common.Column[]{
+            new com.rameses.rcp.common.Column(new Object[]{
+                new Object[]{"name", "dtstart"}
+                , new Object[]{"caption", "Date Start"}
+                , new Object[]{"width", 100}
+                , new Object[]{"minWidth", 0}
+                , new Object[]{"maxWidth", 0}
+                , new Object[]{"required", false}
+                , new Object[]{"resizable", true}
+                , new Object[]{"nullWhenEmpty", true}
+                , new Object[]{"editable", false}
+                , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.DateColumnHandler(null, null, null)}
+            }),
+            new com.rameses.rcp.common.Column(new Object[]{
+                new Object[]{"name", "title"}
+                , new Object[]{"caption", "Title"}
+                , new Object[]{"width", 100}
+                , new Object[]{"minWidth", 0}
+                , new Object[]{"maxWidth", 0}
+                , new Object[]{"required", false}
+                , new Object[]{"resizable", true}
+                , new Object[]{"nullWhenEmpty", true}
+                , new Object[]{"editable", false}
+                , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
+            }),
+            new com.rameses.rcp.common.Column(new Object[]{
+                new Object[]{"name", "description"}
+                , new Object[]{"caption", "Description"}
+                , new Object[]{"width", 100}
+                , new Object[]{"minWidth", 0}
+                , new Object[]{"maxWidth", 0}
+                , new Object[]{"required", false}
+                , new Object[]{"resizable", true}
+                , new Object[]{"nullWhenEmpty", true}
+                , new Object[]{"editable", false}
+                , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
+            })
+        });
+        xDataTable3.setHandler("followupEntryHandler");
+        xDataTable3.setId("followupEntryHandler");
+        xDataTable3.setName("selectedFollowupItem"); // NOI18N
+
+        xButton7.setName("addCaseFollowup"); // NOI18N
+        xButton7.setText("Add Followup");
+
+        xButton8.setName("refreshFollowupItem"); // NOI18N
+        xButton8.setText("Refresh");
+
+        javax.swing.GroupLayout xPanel5Layout = new javax.swing.GroupLayout(xPanel5);
+        xPanel5.setLayout(xPanel5Layout);
+        xPanel5Layout.setHorizontalGroup(
+            xPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(xPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(xPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(xDataTable3, javax.swing.GroupLayout.DEFAULT_SIZE, 962, Short.MAX_VALUE)
+                    .addGroup(xPanel5Layout.createSequentialGroup()
+                        .addComponent(xButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(xButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        xPanel5Layout.setVerticalGroup(
+            xPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, xPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(xPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(xButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(xButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(xDataTable3, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        xTabbedPane1.addTab("Followup", xPanel5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -247,8 +466,8 @@ public class LegalCasePage extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(xTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(xTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,7 +484,15 @@ public class LegalCasePage extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private com.rameses.rcp.control.XButton xButton1;
     private com.rameses.rcp.control.XButton xButton2;
+    private com.rameses.rcp.control.XButton xButton3;
+    private com.rameses.rcp.control.XButton xButton4;
+    private com.rameses.rcp.control.XButton xButton5;
+    private com.rameses.rcp.control.XButton xButton6;
+    private com.rameses.rcp.control.XButton xButton7;
+    private com.rameses.rcp.control.XButton xButton8;
     private com.rameses.rcp.control.XDataTable xDataTable1;
+    private com.rameses.rcp.control.XDataTable xDataTable2;
+    private com.rameses.rcp.control.XDataTable xDataTable3;
     private com.rameses.rcp.control.XDateField xDateField1;
     private com.rameses.rcp.control.XDecimalField xDecimalField3;
     private com.rameses.rcp.control.XFormPanel xFormPanel1;
@@ -275,6 +502,8 @@ public class LegalCasePage extends javax.swing.JPanel {
     private com.rameses.rcp.control.XLookupField xLookupField4;
     private com.rameses.rcp.control.XPanel xPanel1;
     private com.rameses.rcp.control.XPanel xPanel2;
+    private com.rameses.rcp.control.XPanel xPanel3;
+    private com.rameses.rcp.control.XPanel xPanel5;
     private com.rameses.rcp.control.XTabbedPane xTabbedPane1;
     private com.rameses.rcp.control.XTextArea xTextArea1;
     private com.rameses.rcp.control.XTextArea xTextArea2;

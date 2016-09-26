@@ -1,0 +1,11 @@
+<workunit schemaName="case_ledgerpayment">
+    <invokers>
+        <invoker type="detail_case_ledgerpayment_item" caption="Capture Payment" 
+                 target="popup" action="open"/>
+    </invokers>
+    <code class="mangtas.legalcase.models.CaseLedgerCapturePaymentModel" />
+    <pages>
+        <page template="mangtas.legalcase.views.CaseLedgerCapturePaymentPage" />
+    </pages>
+</workunit>
+
