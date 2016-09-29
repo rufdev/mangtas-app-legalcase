@@ -11,7 +11,7 @@ class CaseLedgerCapturePaymentModel extends CrudFormModel {
 
     def parent;
     def selectedItem;
-    
+    def aftercapture;
      def getLookupAccount(){
         return Inv.lookupOpener('revenueitem:lookup',[
                 onselect :{
@@ -23,6 +23,10 @@ class CaseLedgerCapturePaymentModel extends CrudFormModel {
     public void afterCreate() {
         entity.items = [];
         entity.caseobjid = parent.objid;
+    }
+    
+    public void afterSave(){
+        if (aftercapture ) aftercapture();
     }
     public void beforeOpen(){
         entity.objid = parent.parent.objid;

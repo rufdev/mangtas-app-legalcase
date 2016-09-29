@@ -7,21 +7,36 @@ import com.rameses.osiris2.client.*
 import com.rameses.osiris2.common.*;
 import com.rameses.util.*;
 import tagabukid.utils.*;
-
+import java.text.DecimalFormat;
 class LegalCaseModel extends CrudFormModel{
     def selectedItem;
     def attachmentSelectedItem;
     
     @FormTitle
     def title
-
+    
+    @Service('NumberService')
+    def numSvc     
+    
     public void afterCreate(){
         entity.state = "DRAFT";
+        title = "New Case File";
+        followupEntryHandler.reload();
+        loadAttachments();
+        updateBalance();
     }
     
     public void beforeOpen(){
         title = entity.caseno + " - " + entity.title;
-        loadAttachments()
+        loadAttachments();
+     
+    }
+    
+    public void afterOpen(){
+        title = entity.caseno + " - " + entity.title;
+        followupEntryHandler.reload();
+        loadAttachments();
+        updateBalance();
     }
     
     def ledgerEntryHandler = [
@@ -29,7 +44,8 @@ class LegalCaseModel extends CrudFormModel{
             def p = [_schemaname: 'case_ledgerpayment_item'];
             p.findBy = [ 'parent.caseobjid': entity.objid ];
             p.select = "parent.objid,parent.receiptno,parent.receiptdate,account.title,amount,parent.remarks,parent.createdby_name,parent.dtcreated";
-            return queryService.getList( p );
+            entity.payments = queryService.getList( p )
+            return entity.payments;
           
         }
     ] as BasicListModel;
@@ -45,7 +61,11 @@ class LegalCaseModel extends CrudFormModel{
     ] as BasicListModel;
 
     def capturePayment() {
-        return Inv.lookupOpener("capture_case_ledgerpayment_item", [parent: entity ] );
+        return Inv.lookupOpener("capture_case_ledgerpayment_item", [parent: entity,
+                aftercapture:{
+                    updateBalance();
+                    binding.refresh("entity.balance|entity.totalpayment");
+                } ] );
     }
     
     def paymentDetail() {
@@ -60,7 +80,7 @@ class LegalCaseModel extends CrudFormModel{
     }
 
     void refreshItem() {
-        ledgerEntryHandler.reload();
+          updateBalance();
     }
     void refreshFollowupItem() {
         followupEntryHandler.reload();
@@ -156,5 +176,17 @@ class LegalCaseModel extends CrudFormModel{
 
     }
     
+    void updateBalance() {
+        ledgerEntryHandler.reload();
+        entity.totalpayment = 0;
+        entity.balance = 0;
+        def tp = 0
+        if (entity.payments){
+            tp = entity.payments.sum{x-> x.amount };
+            entity.totalpayment = numSvc.format('#,##0.00', tp);
+        }
+        entity.balance = numSvc.format('#,##0.00',entity.acceptancefee - tp);
+       
+    }
     
 }
