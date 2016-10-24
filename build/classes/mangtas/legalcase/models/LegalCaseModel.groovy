@@ -23,7 +23,7 @@ class LegalCaseModel extends CrudFormModel{
         title = "New Case File";
         followupEntryHandler.reload();
         loadAttachments();
-        updateBalance();
+       
     }
     
     public void beforeOpen(){
@@ -36,6 +36,11 @@ class LegalCaseModel extends CrudFormModel{
         title = entity.caseno + " - " + entity.title;
         followupEntryHandler.reload();
         loadAttachments();
+        updateBalance();
+    }
+    
+    public void afterSave(){
+        mode='read';
         updateBalance();
     }
     
